@@ -1,0 +1,14 @@
+    
+-# frozen_string_literal: true
+= form_with do |form|
+  .field
+    = form.text_field :email ,class:"form-control w-75 m-3 shadow center" ,placeholder: "Email"
+    = form.password_field :password ,class:"form-control w-75 m-3 shadow" ,placeholder:"Password"
+ 
+    .row
+      .col-4
+        = button_to "Login" ,"/feed" ,class:"btn btn-primary mx-auto"
+    .row
+      .col-4
+        = button_to "Register" ,"/users/new" ,class:"btn btn-info mx-auto mt-2" ,method:"get"
+

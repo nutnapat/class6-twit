@@ -1,0 +1,21 @@
+
+%p
+  %table
+    %thead
+      %tr
+        %th Msg
+        %th User
+        %th Name
+        %th created
+        %th
+        %th
+        %th
+
+    %tbody
+      - @followees.each do |followee|
+        -followee.posts.order('created_at DESC').each do |post|
+          %tr
+            %td= post.msg
+            %td= post.user_id
+            %td= post.user.name
+            %td= post.created_at
