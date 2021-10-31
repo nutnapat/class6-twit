@@ -29,8 +29,7 @@ class UsersController < ApplicationController
 
   def feed
     @user = User.find_by(id:session[:user_id])
-    @followees =@user.followees
-   # @posts = Post.all.order('created_at DESC')
+    @posts = @user.get_feed_post 
     
   end
 
@@ -45,14 +44,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @current_user = User.find_by(id:session[:user_id])
     @current_user.followees << @user
-    redirect_back(fallback_location: feed_path)
+    #redirect_back(fallback_location: feed_path)
+    redirect_to feed_path
   end
 
   def unfollow
     @user = User.find(params[:id])
     @current_user = User.find_by(id:session[:user_id])
     @current_user.followed_users.find_by(followee_id: @user.id).destroy
-    redirect_back(fallback_location: feed_path)
+    #redirect_back(fallback_location: feed_path)
+    redirect_to feed_path
   end
 
   def index

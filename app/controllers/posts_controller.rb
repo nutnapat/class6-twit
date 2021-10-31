@@ -1,9 +1,18 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :logged_in, only: %i[new]
-  # GET /posts or /posts.json
+  
+  def unlike
+    Like.find_by(post_id:params[:post_id] ,user_id:session[:user_id]).destroy
+    redirect_to request.referrer
+  end
 
-   def logged_in
+  def like
+    Like.create(post_id:params[:post_id] ,user_id:session[:user_id])
+    redirect_to request.referrer
+  end
+
+  def logged_in
     if(session[:user_id])
       return true
     else
@@ -11,6 +20,7 @@ class PostsController < ApplicationController
     end
   end
 
+  # GET /posts or /posts.json
   def index
     @posts = Post.all
   end
@@ -22,6 +32,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @user = User.find_by(id:session[:user_id])
   end
 
   # GET /posts/1/edit

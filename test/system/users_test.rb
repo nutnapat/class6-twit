@@ -1,9 +1,12 @@
 require "application_system_test_case"
 
+=begin
 class UsersTest < ApplicationSystemTestCase
   setup do
     @user = users(:one)
+    @test_user = users(:test_user)
   end
+
 
   test "visiting the index" do
     visit users_url
@@ -43,5 +46,21 @@ class UsersTest < ApplicationSystemTestCase
     end
 
     assert_text "User was successfully destroyed"
+  end
+=end
+
+  test "login_fail" do
+    visit main_path
+    fill_in "Email", with: 'aaaaaa'
+    fill_in "Password", with: 'aaaaa'
+    click_on "Login"
+    assert_template layout: 'wrong'
+  end
+  test "login_success" do
+    visit main_path
+    fill_in "Email", with: "x"
+    fill_in "Password", with: "111111"
+    click_on "Login"
+    assert_text "login successfully"
   end
 end

@@ -1,8 +1,10 @@
 require "application_system_test_case"
 
+=begin
 class PostsTest < ApplicationSystemTestCase
   setup do
     @post = posts(:one)
+    @user = users(:test_user)
   end
 
   test "visiting the index" do
@@ -42,4 +44,17 @@ class PostsTest < ApplicationSystemTestCase
 
     assert_text "Post was successfully destroyed"
   end
+=end
+
+  test "like" do
+    visit "/main"
+    fill_in "Email", with: "x"
+    fill_in "Password", with: "111111"
+    click_on "Login"
+  # b like a
+    click_button 'Like'
+    visit "/profile/a"
+    click_button '1 Likes'
+    assert_text "b"
+  end    
 end
