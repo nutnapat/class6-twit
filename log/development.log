@@ -20923,3 +20923,1281 @@ Processing by UsersController#feed as HTML
 Completed 200 OK in 238ms (Views: 195.7ms | ActiveRecord: 8.9ms | Allocations: 16358)
 
 
+Started GET "/main" for 127.0.0.1 at 2021-11-03 17:40:49 +0700
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering users/login.html.haml within layouts/application
+  Rendered users/login.html.haml within layouts/application (Duration: 15.7ms | Allocations: 7478)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 12.7ms | Allocations: 6258)
+  Rendered layout layouts/application.html.haml (Duration: 84.0ms | Allocations: 26571)
+Completed 200 OK in 115ms (Views: 95.0ms | ActiveRecord: 0.0ms | Allocations: 30215)
+
+
+Started POST "/main" for 127.0.0.1 at 2021-11-03 17:40:56 +0700
+Processing by UsersController#checklog as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"x", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `checklog'
+Redirected to http://localhost:3000/feed
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `checklog'
+Completed 302 Found in 552ms (ActiveRecord: 3.9ms | Allocations: 10605)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:40:57 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  Rendered users/feed.html.haml within layouts/application (Duration: 3.4ms | Allocations: 3909)
+  Rendered layout layouts/application.html.haml (Duration: 3.8ms | Allocations: 3988)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 4.9ms | Allocations: 20641)
+
+
+  
+ActionView::Template::Error (The line was indented 2 levels deeper than the previous line.):
+    32: 
+    33: 
+    34: .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "likeTitle", :tabindex => "-1", id: "like-modal"}
+    35:     .modal-dialog
+    36:         .modal-content
+    37:             .modal-header
+    38:                 %h5#likeTitle.modal-title Like
+  
+app/views/users/feed.html.haml:35
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:41:44 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (7.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  Rendered users/feed.html.haml within layouts/application (Duration: 7.4ms | Allocations: 3662)
+  Rendered layout layouts/application.html.haml (Duration: 9.1ms | Allocations: 3737)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 7.7ms | Allocations: 8184)
+
+
+  
+ActionView::Template::Error (The line was indented 2 levels deeper than the previous line.):
+    34: .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "likeTitle", :tabindex => "-1", id: "like-modal"}
+    35:   .modal-dialog
+    36:     .modal-content
+    37:         .modal-header
+    38:             %h5#likeTitle.modal-title Like
+    39:             %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+    40:         .modal-body
+  
+app/views/users/feed.html.haml:37
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:42:09 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (3.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  Rendered users/feed.html.haml within layouts/application (Duration: 112.3ms | Allocations: 26571)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 9.6ms | Allocations: 6240)
+  Rendered layout layouts/application.html.haml (Duration: 140.6ms | Allocations: 41940)
+Completed 200 OK in 171ms (Views: 143.2ms | ActiveRecord: 5.8ms | Allocations: 46410)
+
+
+Started POST "/feed/5/like" for 127.0.0.1 at 2021-11-03 17:42:17 +0700
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"5"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mLike Create (2.3ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 5], ["user_id", 4], ["created_at", "2021-11-03 10:42:17.309230"], ["updated_at", "2021-11-03 10:42:17.309230"]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+Redirected to http://localhost:3000/feed
+Completed 302 Found in 45ms (ActiveRecord: 8.3ms | Allocations: 10372)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:42:17 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:28
+  Rendered users/feed.html.haml within layouts/application (Duration: 74.2ms | Allocations: 11719)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.2ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 91.1ms | Allocations: 15087)
+Completed 200 OK in 118ms (Views: 91.1ms | ActiveRecord: 2.9ms | Allocations: 18542)
+
+
+Started POST "/feed/5/unlike" for 127.0.0.1 at 2021-11-03 17:42:21 +0700
+Processing by PostsController#unlike as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"5"}
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? AND "likes"."user_id" = ? LIMIT ?[0m  [["post_id", 5], ["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mLike Destroy (0.3ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 33]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+Redirected to http://localhost:3000/feed
+Completed 302 Found in 27ms (ActiveRecord: 10.9ms | Allocations: 4879)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:42:22 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  Rendered users/feed.html.haml within layouts/application (Duration: 77.2ms | Allocations: 10100)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.1ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 82.9ms | Allocations: 13487)
+Completed 200 OK in 104ms (Views: 81.9ms | ActiveRecord: 2.2ms | Allocations: 16920)
+
+
+Started POST "/feed/8/unlike" for 127.0.0.1 at 2021-11-03 17:42:24 +0700
+Processing by PostsController#unlike as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"8"}
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? AND "likes"."user_id" = ? LIMIT ?[0m  [["post_id", 8], ["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mLike Destroy (1.6ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 31]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+Redirected to http://localhost:3000/feed
+Completed 302 Found in 24ms (ActiveRecord: 7.6ms | Allocations: 4591)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:42:24 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  Rendered users/feed.html.haml within layouts/application (Duration: 53.8ms | Allocations: 8480)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.2ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 71.7ms | Allocations: 11847)
+Completed 200 OK in 95ms (Views: 73.9ms | ActiveRecord: 3.3ms | Allocations: 15273)
+
+
+Started POST "/feed/8/like" for 127.0.0.1 at 2021-11-03 17:42:25 +0700
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"8"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mLike Create (7.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 8], ["user_id", 4], ["created_at", "2021-11-03 10:42:25.792786"], ["updated_at", "2021-11-03 10:42:25.792786"]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+Redirected to http://localhost:3000/feed
+Completed 302 Found in 39ms (ActiveRecord: 12.1ms | Allocations: 6381)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:42:25 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (9.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  Rendered users/feed.html.haml within layouts/application (Duration: 62.0ms | Allocations: 10100)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.1ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 79.0ms | Allocations: 13486)
+Completed 200 OK in 99ms (Views: 69.2ms | ActiveRecord: 10.8ms | Allocations: 16919)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:43:55 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  Rendered users/feed.html.haml within layouts/application (Duration: 83.0ms | Allocations: 20299)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 15.7ms | Allocations: 6254)
+  Rendered layout layouts/application.html.haml (Duration: 137.1ms | Allocations: 35684)
+Completed 200 OK in 166ms (Views: 140.4ms | ActiveRecord: 2.1ms | Allocations: 40039)
+
+
+Started GET "/profile/b" for 127.0.0.1 at 2021-11-03 17:44:00 +0700
+Processing by UsersController#profile as HTML
+  Parameters: {"name"=>"b"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "b"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `profile'
+  Rendering layout layouts/application.html.haml
+  Rendering users/profile.html.haml within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/users/profile.html.haml:16
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 4], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 10], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 10]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (2.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 11], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 11]]
+  ↳ app/views/users/profile.html.haml:27
+  Rendered users/profile.html.haml within layouts/application (Duration: 105.0ms | Allocations: 21911)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.1ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 115.6ms | Allocations: 25201)
+Completed 200 OK in 131ms (Views: 114.3ms | ActiveRecord: 4.9ms | Allocations: 27294)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:44:58 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  Rendered users/feed.html.haml within layouts/application (Duration: 97.9ms | Allocations: 21240)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 18.6ms | Allocations: 6233)
+  Rendered layout layouts/application.html.haml (Duration: 141.5ms | Allocations: 36603)
+Completed 200 OK in 173ms (Views: 143.7ms | ActiveRecord: 2.4ms | Allocations: 40957)
+
+
+Started POST "/feed/5/like" for 127.0.0.1 at 2021-11-03 17:45:01 +0700
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"5"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mLike Create (3.2ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 5], ["user_id", 4], ["created_at", "2021-11-03 10:45:01.631138"], ["updated_at", "2021-11-03 10:45:01.631138"]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+Redirected to http://localhost:3000/feed
+Completed 302 Found in 39ms (ActiveRecord: 9.9ms | Allocations: 6379)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:45:01 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:28
+  Rendered users/feed.html.haml within layouts/application (Duration: 84.6ms | Allocations: 11720)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.5ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 96.8ms | Allocations: 15105)
+Completed 200 OK in 117ms (Views: 100.6ms | ActiveRecord: 2.4ms | Allocations: 18539)
+
+
+Started POST "/feed/8/unlike" for 127.0.0.1 at 2021-11-03 17:45:15 +0700
+Processing by PostsController#unlike as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"8"}
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? AND "likes"."user_id" = ? LIMIT ?[0m  [["post_id", 8], ["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mLike Destroy (1.2ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 34]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+Redirected to http://localhost:3000/feed
+Completed 302 Found in 26ms (ActiveRecord: 4.7ms | Allocations: 4590)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:45:15 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:28
+  Rendered users/feed.html.haml within layouts/application (Duration: 64.0ms | Allocations: 10100)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.1ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 76.6ms | Allocations: 13477)
+Completed 200 OK in 94ms (Views: 76.6ms | ActiveRecord: 2.0ms | Allocations: 16903)
+
+
+Started POST "/feed/8/like" for 127.0.0.1 at 2021-11-03 17:45:17 +0700
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"8"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mLike Create (4.0ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 8], ["user_id", 4], ["created_at", "2021-11-03 10:45:17.056304"], ["updated_at", "2021-11-03 10:45:17.056304"]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+Redirected to http://localhost:3000/feed
+Completed 302 Found in 37ms (ActiveRecord: 9.5ms | Allocations: 6379)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:45:17 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:28
+  Rendered users/feed.html.haml within layouts/application (Duration: 67.4ms | Allocations: 11717)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.2ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 88.5ms | Allocations: 15092)
+Completed 200 OK in 112ms (Views: 88.6ms | ActiveRecord: 2.4ms | Allocations: 18525)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:45:31 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:28
+  Rendered users/feed.html.haml within layouts/application (Duration: 93.4ms | Allocations: 21916)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 20.0ms | Allocations: 6245)
+  Rendered layout layouts/application.html.haml (Duration: 156.5ms | Allocations: 37296)
+Completed 200 OK in 182ms (Views: 156.9ms | ActiveRecord: 2.3ms | Allocations: 41651)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 17:46:21 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:28
+  Rendered users/feed.html.haml within layouts/application (Duration: 107.4ms | Allocations: 22863)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 13.2ms | Allocations: 6224)
+  Rendered layout layouts/application.html.haml (Duration: 154.6ms | Allocations: 38207)
+Completed 200 OK in 190ms (Views: 159.1ms | ActiveRecord: 5.3ms | Allocations: 42537)
+
+
+Started GET "/profile/b" for 127.0.0.1 at 2021-11-03 18:06:37 +0700
+Processing by UsersController#profile as HTML
+  Parameters: {"name"=>"b"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:37:in `profile'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "b"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `profile'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `profile'
+  Rendering layout layouts/application.html.haml
+  Rendering users/profile.html.haml within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/users/profile.html.haml:16
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 4], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 10], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 10]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 11], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 11]]
+  ↳ app/views/users/profile.html.haml:27
+  Rendered users/profile.html.haml within layouts/application (Duration: 125.8ms | Allocations: 23839)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 14.7ms | Allocations: 6244)
+  Rendered layout layouts/application.html.haml (Duration: 168.2ms | Allocations: 39228)
+Completed 200 OK in 190ms (Views: 171.5ms | ActiveRecord: 3.3ms | Allocations: 42563)
+
+
+Started POST "/feed/2/like" for 127.0.0.1 at 2021-11-03 18:06:40 +0700
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"2"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 2], ["user_id", 4], ["created_at", "2021-11-03 11:06:40.960361"], ["updated_at", "2021-11-03 11:06:40.960361"]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+Redirected to http://localhost:3000/profile/b
+Completed 302 Found in 43ms (ActiveRecord: 4.5ms | Allocations: 6420)
+
+
+Started GET "/profile/b" for 127.0.0.1 at 2021-11-03 18:06:41 +0700
+Processing by UsersController#profile as HTML
+  Parameters: {"name"=>"b"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "b"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `profile'
+  Rendering layout layouts/application.html.haml
+  Rendering users/profile.html.haml within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/users/profile.html.haml:16
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:28
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:30
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 4], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 10], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 10]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 11], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 11]]
+  ↳ app/views/users/profile.html.haml:27
+  Rendered users/profile.html.haml within layouts/application (Duration: 99.4ms | Allocations: 12900)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.2ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 118.6ms | Allocations: 16267)
+Completed 200 OK in 131ms (Views: 117.6ms | ActiveRecord: 4.6ms | Allocations: 18044)
+
+
+Started POST "/feed/2/unlike" for 127.0.0.1 at 2021-11-03 18:06:47 +0700
+Processing by PostsController#unlike as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"2"}
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? AND "likes"."user_id" = ? LIMIT ?[0m  [["post_id", 2], ["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mLike Destroy (0.3ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 37]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+Redirected to http://localhost:3000/profile/b
+Completed 302 Found in 23ms (ActiveRecord: 3.3ms | Allocations: 4605)
+
+
+Started GET "/profile/b" for 127.0.0.1 at 2021-11-03 18:06:47 +0700
+Processing by UsersController#profile as HTML
+  Parameters: {"name"=>"b"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "b"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `profile'
+  Rendering layout layouts/application.html.haml
+  Rendering users/profile.html.haml within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/users/profile.html.haml:16
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 4], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 10], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 10]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 11], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 11]]
+  ↳ app/views/users/profile.html.haml:27
+  Rendered users/profile.html.haml within layouts/application (Duration: 111.4ms | Allocations: 11232)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.1ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 123.0ms | Allocations: 14616)
+Completed 200 OK in 131ms (Views: 122.1ms | ActiveRecord: 3.0ms | Allocations: 16385)
+
+
+Started POST "/feed/2/like" for 127.0.0.1 at 2021-11-03 18:06:48 +0700
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"2"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mLike Create (4.0ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 2], ["user_id", 4], ["created_at", "2021-11-03 11:06:48.759184"], ["updated_at", "2021-11-03 11:06:48.759184"]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+Redirected to http://localhost:3000/profile/b
+Completed 302 Found in 35ms (ActiveRecord: 10.5ms | Allocations: 6383)
+
+
+Started GET "/profile/b" for 127.0.0.1 at 2021-11-03 18:06:48 +0700
+Processing by UsersController#profile as HTML
+  Parameters: {"name"=>"b"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "b"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `profile'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `profile'
+  Rendering layout layouts/application.html.haml
+  Rendering users/profile.html.haml within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/users/profile.html.haml:16
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:28
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:30
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 4], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 10], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 10]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 11], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 11]]
+  ↳ app/views/users/profile.html.haml:27
+  Rendered users/profile.html.haml within layouts/application (Duration: 103.3ms | Allocations: 12886)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.3ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 129.2ms | Allocations: 16270)
+Completed 200 OK in 146ms (Views: 129.3ms | ActiveRecord: 7.2ms | Allocations: 18046)
+
+
+Started POST "/feed/2/unlike" for 127.0.0.1 at 2021-11-03 18:06:49 +0700
+Processing by PostsController#unlike as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"2"}
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? AND "likes"."user_id" = ? LIMIT ?[0m  [["post_id", 2], ["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mLike Destroy (0.3ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 38]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+Redirected to http://localhost:3000/profile/b
+Completed 302 Found in 22ms (ActiveRecord: 5.0ms | Allocations: 4590)
+
+
+Started GET "/profile/b" for 127.0.0.1 at 2021-11-03 18:06:49 +0700
+Processing by UsersController#profile as HTML
+  Parameters: {"name"=>"b"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "b"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `profile'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `profile'
+  Rendering layout layouts/application.html.haml
+  Rendering users/profile.html.haml within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/users/profile.html.haml:16
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 4], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 10], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 10]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 11], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 11]]
+  ↳ app/views/users/profile.html.haml:27
+  Rendered users/profile.html.haml within layouts/application (Duration: 74.8ms | Allocations: 11233)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.2ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 89.0ms | Allocations: 14612)
+Completed 200 OK in 98ms (Views: 88.3ms | ActiveRecord: 2.7ms | Allocations: 16381)
+
+
+Started POST "/feed/3/like" for 127.0.0.1 at 2021-11-03 18:06:53 +0700
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"3"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mLike Create (4.6ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 3], ["user_id", 4], ["created_at", "2021-11-03 11:06:53.831436"], ["updated_at", "2021-11-03 11:06:53.831436"]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+Redirected to http://localhost:3000/profile/b
+Completed 302 Found in 34ms (ActiveRecord: 8.0ms | Allocations: 6383)
+
+
+Started GET "/profile/b" for 127.0.0.1 at 2021-11-03 18:06:53 +0700
+Processing by UsersController#profile as HTML
+  Parameters: {"name"=>"b"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "b"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `profile'
+  Rendering layout layouts/application.html.haml
+  Rendering users/profile.html.haml within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/users/profile.html.haml:16
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:28
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:30
+  [1m[36mUser Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 4], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 10], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 10]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 11], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 11]]
+  ↳ app/views/users/profile.html.haml:27
+  Rendered users/profile.html.haml within layouts/application (Duration: 83.9ms | Allocations: 12883)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.1ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 92.2ms | Allocations: 16250)
+Completed 200 OK in 106ms (Views: 95.4ms | ActiveRecord: 4.7ms | Allocations: 18026)
+
+
+Started POST "/feed/2/like" for 127.0.0.1 at 2021-11-03 18:06:55 +0700
+Processing by PostsController#like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"2"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mLike Create (8.2ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 2], ["user_id", 4], ["created_at", "2021-11-03 11:06:55.441158"], ["updated_at", "2021-11-03 11:06:55.441158"]]
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `like'
+Redirected to http://localhost:3000/profile/b
+Completed 302 Found in 42ms (ActiveRecord: 13.1ms | Allocations: 6374)
+
+
+Started GET "/profile/b" for 127.0.0.1 at 2021-11-03 18:06:55 +0700
+Processing by UsersController#profile as HTML
+  Parameters: {"name"=>"b"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "b"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `profile'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `profile'
+  Rendering layout layouts/application.html.haml
+  Rendering users/profile.html.haml within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/users/profile.html.haml:16
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:28
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:30
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:28
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:30
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 4], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 10], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 10]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 11], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 11]]
+  ↳ app/views/users/profile.html.haml:27
+  Rendered users/profile.html.haml within layouts/application (Duration: 102.2ms | Allocations: 14502)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.2ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 121.1ms | Allocations: 17886)
+Completed 200 OK in 132ms (Views: 120.6ms | ActiveRecord: 3.0ms | Allocations: 19662)
+
+
+Started POST "/feed/2/unlike" for 127.0.0.1 at 2021-11-03 18:06:56 +0700
+Processing by PostsController#unlike as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"2"}
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? AND "likes"."user_id" = ? LIMIT ?[0m  [["post_id", 2], ["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mLike Destroy (0.3ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 40]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+Redirected to http://localhost:3000/profile/b
+Completed 302 Found in 27ms (ActiveRecord: 8.1ms | Allocations: 4592)
+
+
+Started GET "/profile/b" for 127.0.0.1 at 2021-11-03 18:06:56 +0700
+Processing by UsersController#profile as HTML
+  Parameters: {"name"=>"b"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "b"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `profile'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `profile'
+  Rendering layout layouts/application.html.haml
+  Rendering users/profile.html.haml within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/users/profile.html.haml:16
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:28
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:30
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 4], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 10], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 10]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 11], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 11]]
+  ↳ app/views/users/profile.html.haml:27
+  Rendered users/profile.html.haml within layouts/application (Duration: 102.1ms | Allocations: 12882)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.2ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 113.0ms | Allocations: 16271)
+Completed 200 OK in 127ms (Views: 110.6ms | ActiveRecord: 3.8ms | Allocations: 18040)
+
+
+Started POST "/feed/3/unlike" for 127.0.0.1 at 2021-11-03 18:06:58 +0700
+Processing by PostsController#unlike as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"3"}
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? AND "likes"."user_id" = ? LIMIT ?[0m  [["post_id", 3], ["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mLike Destroy (3.0ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 39]]
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:6:in `unlike'
+Redirected to http://localhost:3000/profile/b
+Completed 302 Found in 23ms (ActiveRecord: 8.0ms | Allocations: 4590)
+
+
+Started GET "/profile/b" for 127.0.0.1 at 2021-11-03 18:06:58 +0700
+Processing by UsersController#profile as HTML
+  Parameters: {"name"=>"b"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "b"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `profile'
+  Rendering layout layouts/application.html.haml
+  Rendering users/profile.html.haml within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/users/profile.html.haml:16
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 4], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 10], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 10]]
+  ↳ app/views/users/profile.html.haml:27
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 11], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.haml:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 11]]
+  ↳ app/views/users/profile.html.haml:27
+  Rendered users/profile.html.haml within layouts/application (Duration: 63.8ms | Allocations: 11232)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.1ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 73.5ms | Allocations: 14606)
+Completed 200 OK in 85ms (Views: 72.1ms | ActiveRecord: 2.4ms | Allocations: 16375)
+
+
+Started GET "/main" for 127.0.0.1 at 2021-11-03 18:08:26 +0700
+Processing by UsersController#login as HTML
+  Rendering layout layouts/application.html.haml
+  Rendering users/login.html.haml within layouts/application
+  Rendered users/login.html.haml within layouts/application (Duration: 20.5ms | Allocations: 4912)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 5.5ms | Allocations: 6243)
+  Rendered layout layouts/application.html.haml (Duration: 66.9ms | Allocations: 20305)
+Completed 200 OK in 85ms (Views: 83.5ms | Allocations: 21803)
+
+
+Started POST "/main" for 127.0.0.1 at 2021-11-03 18:08:31 +0700
+Processing by UsersController#checklog as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"x", "password"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:21:in `checklog'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `checklog'
+Redirected to http://localhost:3000/feed
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `checklog'
+Completed 302 Found in 503ms (ActiveRecord: 1.3ms | Allocations: 9408)
+
+
+Started GET "/feed" for 127.0.0.1 at 2021-11-03 18:08:31 +0700
+Processing by UsersController#feed as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `feed'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 4]]
+  ↳ app/models/user.rb:18:in `get_feed_post'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/models/user.rb:19:in `block in get_feed_post'
+  Rendering layout layouts/application.html.haml
+  Rendering users/feed.html.haml within layouts/application
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 9], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 9]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 8], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 8]]
+  ↳ app/views/users/feed.html.haml:28
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ? AND "users"."id" = ? LIMIT ?[0m  [["post_id", 5], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/feed.html.haml:21
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:25
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "likes" ON "users"."id" = "likes"."user_id" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:26
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/users/feed.html.haml:28
+  Rendered users/feed.html.haml within layouts/application (Duration: 171.8ms | Allocations: 25859)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.haml (Duration: 0.2ms | Allocations: 50)
+  Rendered layout layouts/application.html.haml (Duration: 194.7ms | Allocations: 29148)
+Completed 200 OK in 241ms (Views: 186.3ms | ActiveRecord: 11.8ms | Allocations: 40922)
+
+
